@@ -6,7 +6,8 @@
 <table>
 	<thead>
 		<tr>
-			{#each Object.keys(foods[0]) as attrib}
+			<th> name </th>
+			{#each Object.keys(foods[0].data) as attrib}
 				<th>{attrib}</th>
 			{/each}
 			<th>preferences</th>
@@ -15,7 +16,10 @@
 	<tbody>
 		{#each foods as food}
 			<tr>
-				{#each Object.values(food) as value, i}
+				<td>
+					{food.name}
+				</td>
+				{#each Object.values(foods[0].data) as value, i}
 					<td style={i > 0 ? 'font-family: monospace' : ''}>{value}</td>
 				{/each}
 				<td>

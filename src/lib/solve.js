@@ -38,6 +38,11 @@ const res = glpk.solve(
 					{ name: 'olja', coef: 88 }
 				],
 				bnds: { type: glpk.GLP_DB, ub: 120, lb: 80 }
+			},
+			{
+				name: 'mjölk-lim',
+				vars: [{ name: 'mjölk', coef: 1 }],
+				bnds: { type: glpk.GLP_UP, ub: 15 }
 			}
 		]
 	},
