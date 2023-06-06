@@ -1,40 +1,14 @@
 import GLPK from 'glpk.js';
-const glpk = GLPK();
+import Problem from './Problem.js';
 
-const samplefoods = [
-	{
-		name: 'ärtprotein',
-		data: {
-			price: 249,
-			kcal: 386,
-			carbs: 3,
-			fat: 6,
-			protein: 80
-		},
-		suitable: {
-			vegan: true,
-			vegetarian: true,
-			lactose: true,
-			gluten: true
-		}
-	},
-	{
-		name: 'risprotein',
-		data: {
-			price: 285,
-			kcal: 366.7,
-			carbs: 3.8,
-			fat: 3.5,
-			protein: 80
-		},
+function solveLP(foods, categoryLimits, foodItemLimits) {
+	const glpk = GLPK();
+	return glpk.solve(new Problem(foods, categoryLimits, foodItemLimits));
+}
 
-		suitable: {
-			vegan: true,
-			vegetarian: true,
-			lactose: true,
-			gluten: true
-		}
-	},
+//export default solveLP;
+
+const test_foods = [
 	{
 		name: 'vWhey 70/30 ä/r',
 		data: {
@@ -60,7 +34,6 @@ const samplefoods = [
 			fat: 4,
 			protein: 19
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
@@ -77,7 +50,6 @@ const samplefoods = [
 			fat: 7,
 			protein: 19
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
@@ -94,7 +66,6 @@ const samplefoods = [
 			fat: 5,
 			protein: 7
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
@@ -111,7 +82,6 @@ const samplefoods = [
 			fat: 3.3,
 			protein: 27
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
@@ -128,7 +98,6 @@ const samplefoods = [
 			fat: 26,
 			protein: 22
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
@@ -145,7 +114,6 @@ const samplefoods = [
 			fat: 1.5,
 			protein: 3.5
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
@@ -178,7 +146,6 @@ const samplefoods = [
 			fat: 1.75,
 			protein: 12.5
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -259,7 +226,6 @@ const samplefoods = [
 			fat: 2.7,
 			protein: 11
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -276,7 +242,6 @@ const samplefoods = [
 			fat: 0,
 			protein: 2.3
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -293,7 +258,6 @@ const samplefoods = [
 			fat: 1,
 			protein: 24
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -310,7 +274,6 @@ const samplefoods = [
 			fat: 0,
 			protein: 5
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -327,7 +290,6 @@ const samplefoods = [
 			fat: 0.2,
 			protein: 2.3
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -344,7 +306,6 @@ const samplefoods = [
 			fat: 89,
 			protein: 0
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
@@ -369,65 +330,103 @@ const samplefoods = [
 		}
 	}
 ];
-let limits = [
-	{ name: 'fat', bounds: [60, 120] },
-	{ name: 'carbs', bounds: [40, 300] },
-	{ name: 'protein', bounds: [40, 200] }
-];
 
-let foodItemLimits = [
-	{ 'olivolja': { lower: null, upper: null } }
-	{ 'smör': { lower: 20, upper: 50 } }
-	{ 'olivolja': { lower: null, upper: null } }
-	{ 'olivolja': { lower: null, upper: null } }
-
-];
-
-class Problem {
-	constructor(foods, categoryBounds, foodItemBounds) {
-		this.name = 'LP';
-		this.objective = {
-			direction: glpk.GLP_MIN,
-			name: 'price',
-			vars: foods.map((food) => {
-				return { name: food.name, coef: food.data.price };
-			})
-		};
-
-		this.subjectTo = categoryBounds
-			.map((limit) => {
-				// Food parameter bounds
-				return {
-					name: limit.name,
-					vars: foods.map((food) => {
-						return { name: food.name, coef: food.data[limit.name] };
-					}),
-					bnds: { type: glpk.GLP_DB, ub: limit.bounds[1], lb: limit.bounds[0] }
-				};
-			})
-			.concat(
-				// Single food bounds
-				foodItemBounds.map((obj) => {
-					return {
-						name: obj.name,
-						vars: [{ name: obj.name, coef: 1 }],
-						bnds: { type: glpk.GLP_DB, ub: obj.bounds[1], lb: obj.bounds[0] }
-					};
-				})
-			);
-
-		this.options = {
-			msglev: glpk.GLP_MSG_ALL,
-			presol: true,
-			cb: {
-				call: (progress) => console.log(progress),
-				each: 1
-			}
-		};
+const test_limits = [
+	{
+		name: 'fat',
+		bounds: [100, 110]
+	},
+	{
+		name: 'carbs',
+		bounds: [320, 330]
+	},
+	{
+		name: 'protein',
+		bounds: [150, 160]
 	}
-}
-function solveLP(foods, categoryLimits, foodItemLimits) {
-	return glpk.solve(new Problem(foods, categoryLimits, foodItemLimits));
-}
+];
 
-export default solveLP;
+const test_food_item_limits = [
+	{
+		name: 'vWhey 70/30 ä/r',
+		bounds: [0, 0.8]
+	},
+	{
+		name: 'kycklingbröst',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'kycklingfärs',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'ägg',
+		bounds: [1.8, 9999]
+	},
+	{
+		name: 'tonfisk',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'halloumi',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'mellanmjölk',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'A-fil',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'bulgur',
+		bounds: [0, 1.5]
+	},
+	{
+		name: 'ris',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'kikärtor',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'jordnötssmör',
+		bounds: [0, 1]
+	},
+	{
+		name: 'fiberrost',
+		bounds: [0, 2.4]
+	},
+	{
+		name: 'musli',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'broccoli',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'linser',
+		bounds: [0, 0.8]
+	},
+	{
+		name: 'ärtor',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'spenat',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'olivolja',
+		bounds: [0, 9999]
+	},
+	{
+		name: 'smör',
+		bounds: [0, 9999]
+	}
+];
+
+solveLP(test_foods, test_limits, test_food_item_limits);
