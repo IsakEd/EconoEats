@@ -7,15 +7,6 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 
-		interface Food {
-			name: string;
-			price: number;
-			kcal: number;
-			carbohydrates: number;
-			fat: number;
-			protein: number;
-		}
-
 		type FoodCategory = 'junk' | 'grains' | 'meat' | 'drink';
 
 		interface LP {
