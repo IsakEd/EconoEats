@@ -369,7 +369,6 @@ const samplefoods = [
 		}
 	}
 ];
-
 let limits = [
 	{ name: 'fat', bounds: [60, 120] },
 	{ name: 'carbs', bounds: [40, 300] },
@@ -377,9 +376,11 @@ let limits = [
 ];
 
 let foodItemLimits = [
-	{ name: 'olivolja', bounds: [0, 0.5] },
-	{ name: 'linser', bounds: [0, 0.6] },
-	{ name: 'smör', bounds: [0.2, 0.5] }
+	{ 'olivolja': { lower: null, upper: null } }
+	{ 'smör': { lower: 20, upper: 50 } }
+	{ 'olivolja': { lower: null, upper: null } }
+	{ 'olivolja': { lower: null, upper: null } }
+
 ];
 
 class Problem {
@@ -393,15 +394,27 @@ class Problem {
 			})
 		};
 
-		this.subjectTo = categoryBounds.map((limit) => {
-			return {
-				name: limit.name,
-				vars: foods.map((food) => {
-					return { name: food.name, coef: food.data[limit.name] };
-				}),
-				bnds: { type: glpk.GLP_DB, ub: limit.bounds[1], lb: limit.bounds[0] }
-			};
-		});
+		this.subjectTo = categoryBounds
+			.map((limit) => {
+				// Food parameter bounds
+				return {
+					name: limit.name,
+					vars: foods.map((food) => {
+						return { name: food.name, coef: food.data[limit.name] };
+					}),
+					bnds: { type: glpk.GLP_DB, ub: limit.bounds[1], lb: limit.bounds[0] }
+				};
+			})
+			.concat(
+				// Single food bounds
+				foodItemBounds.map((obj) => {
+					return {
+						name: obj.name,
+						vars: [{ name: obj.name, coef: 1 }],
+						bnds: { type: glpk.GLP_DB, ub: obj.bounds[1], lb: obj.bounds[0] }
+					};
+				})
+			);
 
 		this.options = {
 			msglev: glpk.GLP_MSG_ALL,
@@ -413,56 +426,8 @@ class Problem {
 		};
 	}
 }
+function solveLP(foods, categoryLimits, foodItemLimits) {
+	return glpk.solve(new Problem(foods, categoryLimits, foodItemLimits));
+}
 
-/* const options = {
-	msglev: glpk.GLP_MSG_ALL,
-	presol: true,
-	cb: {
-		call: (progress) => console.log(progress),
-		each: 1
-	}
-}; */
-
-glpk.solve(new Problem(samplefoods, limits));
-
-/* const res = glpk.solve(
-	{
-		name: 'LP',
-		objective: {
-			direction: glpk.GLP_MIN,
-			name: 'price',
-			vars: [
-				{ name: 'mjölk', coef: 15 },
-				{ name: 'bröd', coef: 80 },
-				{ name: 'olja', coef: 80 }
-			]
-		},
-		subjectTo: [
-			{
-				name: 'protein',
-				vars: [
-					{ name: 'mjölk', coef: 4.5 },
-					{ name: 'bröd', coef: 12 },
-					{ name: 'olja', coef: 0 }
-				],
-				bnds: { type: glpk.GLP_DB, ub: 180, lb: 120 }
-			},
-			{
-				name: 'fat',
-				vars: [
-					{ name: 'mjölk', coef: 1.5 },
-					{ name: 'bröd', coef: 4 },
-					{ name: 'olja', coef: 88 }
-				],
-				bnds: { type: glpk.GLP_DB, ub: 120, lb: 80 }
-			},
-			{
-				name: 'mjölk-lim',
-				vars: [{ name: 'mjölk', coef: 1 }],
-				bnds: { type: glpk.GLP_UP, ub: 15 }
-			}
-		]
-	},
-	options
-);
- */
+export default solveLP;
