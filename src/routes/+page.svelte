@@ -2,6 +2,8 @@
 	import exampleFoods from '$lib/exampleFoods';
 	import FoodParameters from '../components/FoodParameters.svelte';
 	import FoodTable from '../components/FoodTable.svelte';
+
+	//Imports all the food from the "database"
 	let foods = JSON.parse(JSON.stringify(exampleFoods));
 
 	type SuitabilityCriteria = {
@@ -21,6 +23,11 @@
 		{ name: 'protein', bounds: [140, 200] }
 	];
 
+	let foodItemLimits: Limit[] = foods.map((obj: Food) => {
+		let limit: Limit = { name: obj.name, bounds: [0, 9999] };
+		return limit;
+	});
+
 	let userRestrictions: SuitabilityCriteria = {
 		vegan: false,
 		vegetarian: false,
@@ -35,10 +42,13 @@
 			});
 		});
 	}
-
-	$: userRestrictions, filterFoodsByRestrictions();
 </script>
 
+<button
+	on:click={() => {
+		console.log(userRestrictions);
+	}}>test</button
+>
 optinut is the optimum nutrition for the cheapest dough
-<FoodParameters {limits} {userRestrictions} />
-<FoodTable {foods} />
+<FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
+<FoodTable {foods} {foodItemLimits} />

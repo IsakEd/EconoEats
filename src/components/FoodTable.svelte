@@ -1,31 +1,6 @@
 <script lang="ts">
 	export let foods: Food[];
-
-	let limits: Limit[] = [
-		{ name: 'fat', bounds: [60, 120] },
-		{ name: 'carbs', bounds: [160, 300] },
-		{ name: 'protein', bounds: [140, 200] }
-	];
-
-	$: calories = (() => {
-		let lowerCals = 0;
-		let upperCals = 0;
-		limits.forEach((limit) => {
-			if (limit.name == 'carbs' || limit.name == 'protein') {
-				lowerCals += 4 * limit.bounds[0];
-				upperCals += 4 * limit.bounds[1];
-			} else if (limit.name == 'fat') {
-				lowerCals += 9 * limit.bounds[0];
-				upperCals += 9 * limit.bounds[1];
-			}
-		});
-		return [lowerCals, upperCals];
-	})();
-
-	let foodItemLimits: Limit[] = foods.map((obj: Food) => {
-		let limit: Limit = { name: obj.name, bounds: [0, 9999] };
-		return limit;
-	});
+	export let foodItemLimits: Limit[];
 </script>
 
 <table>

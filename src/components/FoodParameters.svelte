@@ -37,7 +37,12 @@
 			{#if restriction === 'vegan' || restriction === 'vegetarian' || restriction === 'lactose' || restriction === 'gluten'}
 				<div class="flex-col centered">
 					<p>{restriction}</p>
-					<input name="carbs-upper" type="checkbox" bind:checked={userRestrictions[restriction]} />
+					<input
+						name="carbs-upper"
+						type="checkbox"
+						bind:checked={userRestrictions[restriction]}
+						on:change
+					/>
 				</div>
 			{/if}
 		{/each}
