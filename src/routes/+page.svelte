@@ -4,8 +4,10 @@
 	import FoodTable from '../components/FoodTable.svelte';
 	import postData from '$lib/postData';
 	import Results from '../components/Results.svelte';
+	import Modal from '$lib/Modal.svelte';
 
 	let results = '';
+	$: showModal = !!results;
 
 	const optimizeOnServer = async () => {
 		const res = await postData('/calculate', {
@@ -49,7 +51,8 @@
 <div><button on:click={optimizeOnServer}>OPTIMIZE</button></div>
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
 <FoodTable {foods} {foodItemLimits} />
-
 {#if results}
-	<Results {results} />
+	<Modal {showModal}>
+		<Results {results} />
+	</Modal>
 {/if}

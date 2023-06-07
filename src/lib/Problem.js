@@ -29,7 +29,7 @@ class Problem {
 					return {
 						name: limit.name,
 						vars: [{ name: limit.name, coef: 1 }],
-						bnds: { type: glpk.GLP_DB, ub: limit.bounds[1], lb: limit.bounds[0] }
+						bnds: { type: glpk.GLP_DB, ub: limit.bounds[1] / 100, lb: limit.bounds[0] / 100 } // g -> hg
 					};
 				})
 			);

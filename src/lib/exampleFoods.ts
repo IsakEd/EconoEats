@@ -24,40 +24,7 @@ interface FoodProperties {
 
 const exampleFoods: Food[] = [
 	{
-		name: 'ärtprotein',
-		data: {
-			price: 249,
-			kcal: 386,
-			carbs: 3,
-			fat: 6,
-			protein: 80
-		},
-		suitable: {
-			vegan: true,
-			vegetarian: true,
-			lactose: true,
-			gluten: true
-		}
-	},
-	{
-		name: 'risprotein',
-		data: {
-			price: 285,
-			kcal: 366.7,
-			carbs: 3.8,
-			fat: 3.5,
-			protein: 80
-		},
-
-		suitable: {
-			vegan: true,
-			vegetarian: true,
-			lactose: true,
-			gluten: true
-		}
-	},
-	{
-		name: 'vWhey 70/30 ä/r',
+		name: 'pea/rice 7:3 proteinpulver',
 		data: {
 			price: 259.8,
 			kcal: 380.21,
