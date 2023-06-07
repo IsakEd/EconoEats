@@ -1,6 +1,15 @@
 <script>
 	export let results;
+	export let foods;
 	const { status, z, vars, dual } = results;
+	const totalCalories = () => {
+		let cals = 0;
+		for (const [food, hectogram] of Object.entries(vars)) {
+			const { protein, carbs, fat } = foods.find((obj) => obj.name === food).data;
+			cals += (4 * (protein + carbs) + 9 * fat) * hectogram;
+		}
+		return cals;
+	};
 </script>
 
 <div>
@@ -13,4 +22,5 @@
 		{/if}
 	{/each}
 	<h2>For the price of {z.toFixed(0)} kr</h2>
+	<h2>Total calories: {totalCalories()}</h2>
 </div>

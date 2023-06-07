@@ -53,6 +53,6 @@
 <FoodTable {foods} {foodItemLimits} />
 {#if results}
 	<Modal {showModal}>
-		<Results {results} />
+		<Results {results} {foods} />
 	</Modal>
 {/if}
