@@ -4,6 +4,8 @@
 	export let limits: Limit[];
 	export let userRestrictions: SuitabilityCriteria;
 
+	let strictness: 'strict' | 'relaxed' = 'relaxed';
+
 	$: calories = (() => {
 		let lowerCals = 0;
 		let upperCals = 0;
@@ -18,20 +20,40 @@
 		});
 		return [lowerCals, upperCals];
 	})();
+
+	const updateBounds = () => {
+		limits.forEach((lim) => {
+			lim.bounds[1] = lim.bounds[0] * (strictness == 'strict' ? 1.05 : 1.2);
+		});
+	};
+	$: strictness, updateBounds();
 </script>
 
 <button on:click={() => console.log(userRestrictions)} />
 <div id="content" class="">
 	<InputContainer title="Macronutrient goals">
-		{#each limits as goal}
+		{#each limits as goal, i}
 			<div class="flex-col centered bounds">
 				<p>{goal.name}</p>
-				<input name="{goal.name}-upper" type="number" bind:value={goal.bounds[1]} />
-				<input name="{goal.name}-lower" type="number" bind:value={goal.bounds[0]} />
+				<input
+					name="{goal.name}-lower"
+					type="number"
+					bind:value={goal.bounds[0]}
+					on:input={updateBounds}
+				/>
 			</div>
 		{/each}
-		calories: {calories[0]} - {calories[1]}
 	</InputContainer>
+	calories: {calories[0].toFixed(0)} - {calories[1].toFixed(0)}
+	<label>
+		<input type="radio" bind:group={strictness} value="strict" />
+		strict
+	</label>
+
+	<label>
+		<input type="radio" bind:group={strictness} value="relaxed" />
+		relaxed
+	</label>
 	<InputContainer title="Dietary restrictions">
 		{#each Object.keys(userRestrictions) as restriction}
 			{#if restriction === 'vegan' || restriction === 'vegetarian' || restriction === 'lactose' || restriction === 'gluten'}

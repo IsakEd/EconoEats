@@ -20,13 +20,13 @@
 	let foods = structuredClone(exampleFoods);
 
 	let limits: Limit[] = [
-		{ name: 'fat', bounds: [60, 120] },
-		{ name: 'carbs', bounds: [160, 300] },
-		{ name: 'protein', bounds: [140, 200] }
+		{ name: 'fat', bounds: [100, 120] },
+		{ name: 'carbs', bounds: [250, 300] },
+		{ name: 'protein', bounds: [180, 200] }
 	];
 
 	let foodItemLimits: Limit[] = foods.map((obj: Food) => {
-		let limit: Limit = { name: obj.name, bounds: [0, 9999] };
+		let limit: Limit = { name: obj.name, bounds: [0, 100] };
 		return limit;
 	});
 

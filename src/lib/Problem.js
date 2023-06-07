@@ -20,7 +20,7 @@ class Problem {
 					vars: foods.map((food) => {
 						return { name: food.name, coef: food.data[limit.name] };
 					}),
-					bnds: { type: glpk.GLP_DB, ub: limit.bounds[1], lb: limit.bounds[0] }
+					bnds: { type: glpk.GLP_DB, lb: limit.bounds[0], ub: limit.bounds[1] }
 				};
 			})
 			.concat(
