@@ -328,13 +328,45 @@ const test_foods = [
 			lactose: false,
 			gluten: true
 		}
+	},
+	{
+		name: 'morot',
+		data: {
+			price: 8,
+			kcal: 41,
+			carbs: 9.6,
+			fat: 0.2,
+			protein: 0.9
+		},
+		suitable: {
+			vegan: true,
+			vegetarian: true,
+			lactose: true,
+			gluten: true
+		}
+	},
+	{
+		name: 'havregryn',
+		data: {
+			price: 20,
+			kcal: 389,
+			carbs: 66,
+			fat: 7,
+			protein: 13
+		},
+		suitable: {
+			vegan: true,
+			vegetarian: true,
+			lactose: true,
+			gluten: false
+		}
 	}
 ];
 
 const test_limits = [
 	{
 		name: 'fat',
-		bounds: [100, 110]
+		bounds: [60, 110]
 	},
 	{
 		name: 'carbs',
@@ -423,10 +455,9 @@ const test_food_item_limits = [
 		name: 'olivolja',
 		bounds: [0, 9999]
 	},
-	{
-		name: 'smör',
-		bounds: [0, 9999]
-	}
+	{ name: 'smör', bounds: [0, 9999] },
+	{ name: 'havregryn', bounds: [0, 0.8] },
+	{ name: 'morot', bounds: [0, 0.8] }
 ];
 
-solveLP(test_foods, test_limits, test_food_item_limits);
+export default solveLP;

@@ -2,20 +2,22 @@
 	import exampleFoods from '$lib/exampleFoods';
 	import FoodParameters from '../components/FoodParameters.svelte';
 	import FoodTable from '../components/FoodTable.svelte';
+	import postData from '$lib/postData';
+	import Results from '../components/Results.svelte';
+
+	let results = '';
+
+	const optimizeOnServer = async () => {
+		const res = await postData('/calculate', {
+			foods: foods,
+			categoryLimits: limits,
+			foodItemLimits: foodItemLimits
+		});
+		results = res.result;
+	};
 
 	//Imports all the food from the "database"
-	let foods = JSON.parse(JSON.stringify(exampleFoods));
-
-	type SuitabilityCriteria = {
-		vegan: boolean;
-		vegetarian: boolean;
-		lactose: boolean;
-		gluten: boolean;
-	};
-	interface Limit {
-		name: string;
-		bounds: number[];
-	}
+	let foods = structuredClone(exampleFoods);
 
 	let limits: Limit[] = [
 		{ name: 'fat', bounds: [60, 120] },
@@ -44,11 +46,10 @@
 	}
 </script>
 
-<button
-	on:click={() => {
-		console.log(userRestrictions);
-	}}>test</button
->
-optinut is the optimum nutrition for the cheapest dough
+<div><button on:click={optimizeOnServer}>OPTIMIZE</button></div>
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
 <FoodTable {foods} {foodItemLimits} />
+
+{#if results}
+	<Results {results} />
+{/if}
