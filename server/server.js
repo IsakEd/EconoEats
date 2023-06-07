@@ -1,7 +1,7 @@
 import express from 'express';
-import { handler } from './build/handler.js';
+import { handler } from '../..build/handler.js';
 import bodyParser from 'body-parser';
-import solveLP from '../optinut/src/lib/solve.js';
+import solveLP from '$lib/solve.js';
 
 const app = express();
 const port = 3000;

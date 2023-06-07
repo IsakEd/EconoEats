@@ -22,5 +22,5 @@
 		{/if}
 	{/each}
 	<h2>For the price of {z.toFixed(0)} kr</h2>
-	<h2>Total calories: {totalCalories()}</h2>
+	<h2>Total calories: {totalCalories().toFixed(0)}</h2>
 </div>

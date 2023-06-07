@@ -24,6 +24,22 @@ interface FoodProperties {
 
 const exampleFoods: Food[] = [
 	{
+		name: 'havregryn',
+		data: {
+			price: 20,
+			kcal: 389,
+			carbs: 66,
+			fat: 7,
+			protein: 13
+		},
+		suitable: {
+			vegan: true,
+			vegetarian: true,
+			lactose: true,
+			gluten: false
+		}
+	},
+	{
 		name: 'pea/rice 7:3 proteinpulver',
 		data: {
 			price: 259.8,
