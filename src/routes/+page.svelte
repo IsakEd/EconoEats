@@ -6,12 +6,13 @@
 	import Results from '../components/Results.svelte';
 	import Modal from '$lib/Modal.svelte';
 
+	let server = 'http://44.202.140.228/calculate';
 	let results = '';
 	$: showModal = !!results;
 
 	const optimizeOnServer = async () => {
 		console.log(foods);
-		const res = await postData('/calculate', {
+		const res = await postData(server, {
 			foods: foods,
 			categoryLimits: limits
 		});
