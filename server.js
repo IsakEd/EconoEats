@@ -16,8 +16,9 @@ import cors from 'cors';
 
 const app = express();
 const port = 80; // TODO: nginx reverse proxy to avoid using port 80 for security reasons
+app.use(cors());
 
-app.post('/calculate', bodyParser.json(), cors(), (req, res) => {
+app.post('/calculate', bodyParser.json(), (req, res) => {
 	const { foods, categoryLimits, foodItemLimits } = req.body;
 	res.json(solveLP(foods, categoryLimits, foodItemLimits));
 });
