@@ -4,14 +4,15 @@
 This code is hosted on an AWS server and is separate from the application, which is hosted on Vercel.
 The reasoning for this is that using the node-adapter in sveltekit disturbs the normal workflow and SSR inherent to SvelteKit
 
+Note to self: Stop the server with 'ps aux | grep "node server"' and then 'kill PID'
+
 
 */
 
 import express from 'express';
 import bodyParser from 'body-parser';
 import solveLP from './src/lib/solve.js';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const cors = require('cors');
+import cors from 'cors';
 
 const app = express();
 const port = 80; // TODO: nginx reverse proxy to avoid using port 80 for security reasons
