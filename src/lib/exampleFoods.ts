@@ -1,5 +1,3 @@
-import type Food from '../app';
-
 const exampleFoods: Food[] = [
 	{
 		name: 'havregryn',
@@ -16,8 +14,16 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: false
 		},
-		bounds: [0, 40] // x = 40 grams (common portion size for oatmeal)
+		bounds: [0, 40], // x = 40 grams (common portion size for oatmeal)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: true
+		}
 	},
+
 	{
 		name: 'pea/rice 7:3 proteinpulver',
 		data: {
@@ -33,7 +39,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 30] // x = 30 grams (common portion size for protein powder)
+		bounds: [0, 30], // x = 30 grams (common portion size for protein powder)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: true,
+			grain: true
+		}
 	},
 	{
 		name: 'kycklingbröst',
@@ -50,7 +63,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for chicken breast)
+		bounds: [0, 100], // x = 100 grams (common portion size for chicken breast)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'kycklingfärs',
@@ -67,7 +87,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for ground chicken)
+		bounds: [0, 100], // x = 100 grams (common portion size for ground chicken)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'ägg',
@@ -84,7 +111,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 50] // x = 50 grams (common portion size for eggs)
+		bounds: [0, 50], // x = 50 grams (common portion size for eggs)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'tonfisk',
@@ -101,7 +135,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for tuna)
+		bounds: [0, 100], // x = 100 grams (common portion size for tuna)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'halloumi',
@@ -118,7 +159,14 @@ const exampleFoods: Food[] = [
 			lactose: false,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for halloumi cheese)
+		bounds: [0, 100], // x = 100 grams (common portion size for halloumi cheese)
+		type: {
+			dairy: true,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'mellanmjölk',
@@ -135,7 +183,14 @@ const exampleFoods: Food[] = [
 			lactose: false,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for semi-skimmed milk)
+		bounds: [0, 100], // x = 100 grams (common portion size for semi-skimmed milk)
+		type: {
+			dairy: true,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'A-fil',
@@ -152,7 +207,14 @@ const exampleFoods: Food[] = [
 			lactose: false,
 			gluten: true
 		},
-		bounds: [0, 200] // x = 200 grams (common portion size for cultured milk)
+		bounds: [0, 200], // x = 200 grams (common portion size for cultured milk)
+		type: {
+			dairy: true,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'bulgur',
@@ -169,7 +231,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: false
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for bulgur)
+		bounds: [0, 100], // x = 100 grams (common portion size for bulgur)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: true
+		}
 	},
 	{
 		name: 'ris',
@@ -186,7 +255,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for rice)
+		bounds: [0, 100], // x = 100 grams (common portion size for rice)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: true
+		}
 	},
 	{
 		name: 'kikärtor',
@@ -203,7 +279,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 100] // x = 100 grams (common portion size for chickpeas)
+		bounds: [0, 100], // x = 100 grams (common portion size for chickpeas)
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'jordnötssmör',
@@ -220,7 +303,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 30] // x = 30 grams (common portion size for peanut butter)
+		bounds: [0, 30], // x = 30 grams (common portion size for peanut butter)
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'fiberrost',
@@ -237,7 +327,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: false
 		},
-		bounds: [0, 50] // x = 50 grams (common portion size for whole grain toast)
+		bounds: [0, 50], // x = 50 grams (common portion size for whole grain toast)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: true,
+			grain: false
+		}
 	},
 	{
 		name: 'musli',
@@ -254,7 +351,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 50] // x = 50 grams (common portion size for muesli)
+		bounds: [0, 50], // x = 50 grams (common portion size for muesli)
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: true,
+			grain: true
+		}
 	},
 	{
 		name: 'broccoli',
@@ -272,7 +376,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'linser',
@@ -290,7 +401,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'ärtor',
@@ -308,7 +426,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'spenat',
@@ -326,7 +451,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: false,
+			vegetable: true,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'olivolja',
@@ -344,7 +476,14 @@ const exampleFoods: Food[] = [
 			lactose: true,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: false,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	},
 	{
 		name: 'smör',
@@ -361,7 +500,14 @@ const exampleFoods: Food[] = [
 			lactose: false,
 			gluten: true
 		},
-		bounds: [0, 80]
+		bounds: [0, 80],
+		type: {
+			dairy: true,
+			vegetable: false,
+			fruit: false,
+			junk: false,
+			grain: false
+		}
 	}
 ];
 

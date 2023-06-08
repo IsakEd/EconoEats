@@ -26,9 +26,6 @@ class Problem {
 			.concat(
 				// Single food bounds
 				foods.map((food) => {
-					/* 					console.log(limit.bounds[1]);
-					//If the food item has bounds but isn't included in the diet it shouldn't be included in the limit
-					if (foods.find((obj) => (obj.name = limit.name))) { */
 					return {
 						name: food.name,
 						vars: [{ name: food.name, coef: 1 }],
