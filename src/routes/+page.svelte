@@ -8,20 +8,26 @@
 
 	let server = 'http://44.202.140.228/calculate';
 	let results = '';
-	$: showModal = !!results;
+	$: showModal = !!results; //bang bang, you're boolean!
 
 	const optimizeOnServer = async () => {
-		console.log(foods);
-		const res = await postData(server, {
-			foods: foods,
-			categoryLimits: limits
-		});
-		results = res.result;
+		try {
+			console.log(foods);
+			const res = await postData(server, {
+				foods: foods,
+				categoryLimits: limits
+			});
+			results = res.result;
+		} catch (error) {
+			// Handle the error gracefully
+			console.error('An error occurred:', error);
+			// You can choose to do something specific in case of an error, such as setting a default value for results or showing an error message to the user
+			results = 'An error occurred when connecting to the server'; // Set results to an empty array as a default value
+		}
 	};
 
 	//Imports all the food from the "database"
-	//let foods = structuredClone(exampleFoods);  ! Incompatible with EC2 Node version
-	let foods = JSON.parse(JSON.stringify(exampleFoods));
+	let foods = structuredClone(exampleFoods);
 
 	let limits: Limit[] = [
 		{ name: 'fat', bounds: [100, 120] },
