@@ -1,27 +1,5 @@
 import type Food from '../app';
 
-interface Food {
-	name: string;
-	data: FoodData;
-	suitable: FoodProperties;
-}
-
-interface FoodData {
-	price: number;
-	kcal: number;
-	carbs: number;
-	fat: number;
-	protein: number;
-}
-
-interface FoodProperties {
-	vegan: boolean;
-	vegetarian: boolean;
-	lactose: boolean;
-	gluten: boolean;
-	paleo?: boolean;
-}
-
 const exampleFoods: Food[] = [
 	{
 		name: 'havregryn',
@@ -37,7 +15,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: false
-		}
+		},
+		bounds: [0, 40] // x = 40 grams (common portion size for oatmeal)
 	},
 	{
 		name: 'pea/rice 7:3 proteinpulver',
@@ -53,7 +32,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 30] // x = 30 grams (common portion size for protein powder)
 	},
 	{
 		name: 'kycklingbröst',
@@ -64,13 +44,13 @@ const exampleFoods: Food[] = [
 			fat: 4,
 			protein: 19
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for chicken breast)
 	},
 	{
 		name: 'kycklingfärs',
@@ -81,13 +61,13 @@ const exampleFoods: Food[] = [
 			fat: 7,
 			protein: 19
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for ground chicken)
 	},
 	{
 		name: 'ägg',
@@ -98,13 +78,13 @@ const exampleFoods: Food[] = [
 			fat: 5,
 			protein: 7
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 50] // x = 50 grams (common portion size for eggs)
 	},
 	{
 		name: 'tonfisk',
@@ -115,13 +95,13 @@ const exampleFoods: Food[] = [
 			fat: 3.3,
 			protein: 27
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: false,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for tuna)
 	},
 	{
 		name: 'halloumi',
@@ -132,13 +112,13 @@ const exampleFoods: Food[] = [
 			fat: 26,
 			protein: 22
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
 			lactose: false,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for halloumi cheese)
 	},
 	{
 		name: 'mellanmjölk',
@@ -149,13 +129,13 @@ const exampleFoods: Food[] = [
 			fat: 1.5,
 			protein: 3.5
 		},
-
 		suitable: {
 			vegan: false,
 			vegetarian: true,
 			lactose: false,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for semi-skimmed milk)
 	},
 	{
 		name: 'A-fil',
@@ -171,7 +151,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: false,
 			gluten: true
-		}
+		},
+		bounds: [0, 200] // x = 200 grams (common portion size for cultured milk)
 	},
 	{
 		name: 'bulgur',
@@ -182,13 +163,13 @@ const exampleFoods: Food[] = [
 			fat: 1.75,
 			protein: 12.5
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
 			lactose: true,
 			gluten: false
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for bulgur)
 	},
 	{
 		name: 'ris',
@@ -204,7 +185,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for rice)
 	},
 	{
 		name: 'kikärtor',
@@ -220,7 +202,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 100] // x = 100 grams (common portion size for chickpeas)
 	},
 	{
 		name: 'jordnötssmör',
@@ -236,7 +219,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 30] // x = 30 grams (common portion size for peanut butter)
 	},
 	{
 		name: 'fiberrost',
@@ -252,7 +236,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: false
-		}
+		},
+		bounds: [0, 50] // x = 50 grams (common portion size for whole grain toast)
 	},
 	{
 		name: 'musli',
@@ -263,13 +248,13 @@ const exampleFoods: Food[] = [
 			fat: 2.7,
 			protein: 11
 		},
-
 		suitable: {
 			vegan: true,
 			vegetarian: true,
 			lactose: true,
-			gluten: false
-		}
+			gluten: true
+		},
+		bounds: [0, 50] // x = 50 grams (common portion size for muesli)
 	},
 	{
 		name: 'broccoli',
@@ -286,7 +271,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	},
 	{
 		name: 'linser',
@@ -303,7 +289,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	},
 	{
 		name: 'ärtor',
@@ -320,7 +307,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	},
 	{
 		name: 'spenat',
@@ -337,7 +325,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	},
 	{
 		name: 'olivolja',
@@ -354,7 +343,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: true,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	},
 	{
 		name: 'smör',
@@ -370,7 +360,8 @@ const exampleFoods: Food[] = [
 			vegetarian: true,
 			lactose: false,
 			gluten: true
-		}
+		},
+		bounds: [0, 80]
 	}
 ];
 

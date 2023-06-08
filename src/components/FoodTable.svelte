@@ -1,6 +1,5 @@
 <script lang="ts">
 	export let foods: Food[];
-	export let foodItemLimits: Limit[];
 </script>
 
 <table>
@@ -24,10 +23,10 @@
 					<td style="font-family: monospace">{value}</td>
 				{/each}
 				<td>
-					<input class="narrow" type="number" bind:value={foodItemLimits[i].bounds[0]} />
+					<input class="narrow" type="number" bind:value={food.bounds[0]} />
 				</td>
 				<td>
-					<input class="narrow" type="number" bind:value={foodItemLimits[i].bounds[1]} />
+					<input class="narrow" type="number" bind:value={food.bounds[1]} />
 				</td>
 			</tr>
 		{/each}

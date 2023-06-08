@@ -2,7 +2,7 @@ import GLPK from 'glpk.js';
 const glpk = GLPK();
 
 class Problem {
-	constructor(foods, categoryBounds, foodItemBounds) {
+	constructor(foods, categoryBounds) {
 		this.name = 'LP';
 		this.objective = {
 			direction: glpk.GLP_MIN,
@@ -25,11 +25,14 @@ class Problem {
 			})
 			.concat(
 				// Single food bounds
-				foodItemBounds.map((limit) => {
+				foods.map((food) => {
+					/* 					console.log(limit.bounds[1]);
+					//If the food item has bounds but isn't included in the diet it shouldn't be included in the limit
+					if (foods.find((obj) => (obj.name = limit.name))) { */
 					return {
-						name: limit.name,
-						vars: [{ name: limit.name, coef: 1 }],
-						bnds: { type: glpk.GLP_DB, ub: limit.bounds[1] / 100, lb: limit.bounds[0] / 100 } // g -> hg
+						name: food.name,
+						vars: [{ name: food.name, coef: 1 }],
+						bnds: { type: glpk.GLP_DB, ub: food.bounds[1] / 100, lb: food.bounds[0] / 100 } // g -> hg
 					};
 				})
 			);

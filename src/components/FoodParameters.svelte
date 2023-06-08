@@ -29,7 +29,6 @@
 	$: strictness, updateBounds();
 </script>
 
-<button on:click={() => console.log(userRestrictions)} />
 <div id="content" class="">
 	<InputContainer title="Macronutrient goals">
 		{#each limits as goal, i}

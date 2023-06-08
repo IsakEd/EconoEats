@@ -10,27 +10,23 @@
 	$: showModal = !!results;
 
 	const optimizeOnServer = async () => {
+		console.log(foods);
 		const res = await postData('/calculate', {
 			foods: foods,
-			categoryLimits: limits,
-			foodItemLimits: foodItemLimits
+			categoryLimits: limits
 		});
 		results = res.result;
 	};
 
 	//Imports all the food from the "database"
-	let foods = structuredClone(exampleFoods);
+	//let foods = structuredClone(exampleFoods);  ! Incompatible with EC2 Node version
+	let foods = JSON.parse(JSON.stringify(exampleFoods));
 
 	let limits: Limit[] = [
 		{ name: 'fat', bounds: [100, 120] },
 		{ name: 'carbs', bounds: [250, 300] },
 		{ name: 'protein', bounds: [180, 200] }
 	];
-
-	let foodItemLimits: Limit[] = foods.map((obj: Food) => {
-		let limit: Limit = { name: obj.name, bounds: [0, 100] };
-		return limit;
-	});
 
 	let userRestrictions: SuitabilityCriteria = {
 		vegan: false,
@@ -48,9 +44,10 @@
 	}
 </script>
 
-<div><button on:click={optimizeOnServer}>OPTIMIZE</button></div>
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
-<FoodTable {foods} {foodItemLimits} />
+<FoodTable {foods} />
+<div><button on:click={optimizeOnServer}>OPTIMIZE</button></div>
+
 {#if results}
 	<Modal {showModal}>
 		<Results {results} {foods} />

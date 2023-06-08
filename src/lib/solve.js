@@ -8,7 +8,7 @@ function solveLP(foods, categoryLimits, foodItemLimits) {
 
 //export default solveLP;
 
-const test_foods = [
+/* const test_foods = [
 	{
 		name: 'vWhey 70/30 ä/r',
 		data: {
@@ -459,5 +459,5 @@ const test_food_item_limits = [
 	{ name: 'havregryn', bounds: [0, 0.8] },
 	{ name: 'morot', bounds: [0, 0.8] }
 ];
-
+ */
 export default solveLP;

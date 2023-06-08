@@ -8,6 +8,7 @@ interface Food {
 		protein: number;
 	};
 	suitable: SuitabilityCriteria;
+	bounds: number[2];
 }
 
 type SuitabilityCriteria = {
