@@ -1,6 +1,28 @@
 <script>
+	import ActionButton from '$lib/ActionButton.svelte';
+	import PieChart from '$lib/PieChart.svelte';
+
 	export let results;
 	export let foods;
+	let edited = false;
+
+	const deleteFood = (foodname) => {
+		const foodsCopy = [...foods];
+		const newFoods = foodsCopy.splice(foodsCopy.findIndex((food) => food.name === foodname));
+		foods = newFoods;
+		// TODO: find out if this creates a memleak!
+	};
+	const changeLimit = (foodname, increment) => {
+		// TODO: There's a smarter way to do this while still keeping reactivity, find it
+		const newFoods = [...foods];
+		const idx = newFoods.findIndex((food) => food.name === foodname);
+		if (idx !== -1) {
+			newFoods[idx].bounds[1] += increment;
+			foods = newFoods;
+		}
+		foods = newFoods;
+		edited = true;
+	};
 
 	const messagesFromCode = {
 		1: {
@@ -9,7 +31,7 @@
 		},
 		2: {
 			text: 'Solution is feasible',
-			subtext: "So maybe that mean's it's good?"
+			subtext: "So maybe that means it's good?"
 		},
 		3: {
 			text: 'Solution is infeasible',
@@ -28,17 +50,29 @@
 	};
 
 	const { status, z, vars, dual } = results;
-	const totalCalories = () => {
+	const calculateMacros = () => {
 		let cals = 0;
+		let totalCarbs = 0;
+		let totalFat = 0;
+		let totalProtein = 0;
 		for (const [food, hectogram] of Object.entries(vars)) {
 			try {
 				// TODO: don't do this
 				const { protein, carbs, fat } = foods.find((obj) => obj.name === food).data;
+				totalCarbs += carbs;
+				totalFat += fat;
+				totalProtein += protein;
 				cals += (4 * (protein + carbs) + 9 * fat) * hectogram;
-			} catch {}
+			} catch {} //TODO: add error handling
 		}
-		return cals;
+		return {
+			calories: cals,
+			carbs: totalCarbs,
+			fat: totalFat,
+			protein: totalProtein
+		};
 	};
+	const macros = calculateMacros();
 </script>
 
 <div>
@@ -48,9 +82,31 @@
 		{#if vars[food] != 0}
 			<div class="food-item">
 				{(vars[food] * 100).toFixed(0)} grams of {food}
+				<button class="invisible subtle" on:click={() => changeLimit(food, -10)}>-10</button>
+				<button class="invisible subtle" on:click={() => changeLimit(food, -100)}>-100</button>
+				<button class="invisible" on:click={deleteFood(food)} style="color: red">X</button>
+				<button class="invisible subtle" on:click={() => changeLimit(food, 100)}>+100</button>
+				<button class="invisible subtle" on:click={() => changeLimit(food, 10)}>+10</button>
 			</div>
 		{/if}
 	{/each}
 	<h2>For the price of {z.toFixed(0)} kr</h2>
-	<h2>Total calories: {totalCalories().toFixed(0)}</h2>
+	<h2>Total calories: {macros.calories.toFixed(0)}</h2>
 </div>
+<div id="chart">
+	<PieChart
+		chartData={[macros.carbs, macros.fat, macros.protein]}
+		chartLabels={['Carbohydrates', 'Fat', 'Protein']}
+	/>
+</div>
+{#if edited}
+	<ActionButton>Recalculate</ActionButton>
+{/if}
+
+<style>
+	.subtle {
+		font-style: italic;
+		color: gray;
+		font-size: 0.7em;
+	}
+</style>

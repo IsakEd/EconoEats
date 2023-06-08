@@ -6,7 +6,7 @@
 
 	let strictness: 'strict' | 'relaxed' = 'relaxed';
 
-	$: calories = (() => {
+	const calculateCalories = () => {
 		let lowerCals = 0;
 		let upperCals = 0;
 		limits.forEach((limit) => {
@@ -19,14 +19,18 @@
 			}
 		});
 		return [lowerCals, upperCals];
-	})();
+	};
 
 	const updateBounds = () => {
-		limits.forEach((lim) => {
+		limits = limits.map((lim) => {
 			lim.bounds[1] = lim.bounds[0] * (strictness == 'strict' ? 1.05 : 1.2);
+			calories = calculateCalories();
+			return lim;
 		});
 	};
 	$: strictness, updateBounds();
+
+	let calories = calculateCalories();
 </script>
 
 <div id="content" class="">
