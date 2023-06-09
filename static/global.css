@@ -90,6 +90,15 @@ body {
 	--secondary-em: #4caf50;
 	--background-color: #fafafa;
 	--primary-color: #ffffff;
+	--bleak: #c6c6c6;
+}
+
+input {
+	width: 6em;
+	margin-top: 0.5em;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 2px;
 }
 
 .flex-row {

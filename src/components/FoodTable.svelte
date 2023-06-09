@@ -57,12 +57,4 @@
 	.narrow {
 		width: 3em;
 	}
-
-	input {
-		width: 6em;
-		margin-top: 0.5em;
-		display: inline-block;
-		border: 1px solid #ccc;
-		border-radius: 2px;
-	}
 </style>

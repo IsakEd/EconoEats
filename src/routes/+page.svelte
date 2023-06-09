@@ -2,10 +2,10 @@
 	import exampleFoods from '$lib/exampleFoods';
 	import FoodParameters from '../components/FoodParameters.svelte';
 	import FoodTable from '../components/FoodTable.svelte';
-	import postData from '$lib/postData';
 	import Results from '../components/Results.svelte';
-	import Modal from '$lib/Modal.svelte';
 	import ActionButton from '$lib/ActionButton.svelte';
+	import { language } from '../stores';
+	import { currency } from '../stores';
 
 	let results = '';
 	$: showModal = !!results; //bang bang, you're boolean!
@@ -22,7 +22,7 @@
 	}
 
 	//Imports all the food from the "database"
-	let foods = structuredClone(exampleFoods);
+	let foods = structuredClone(exampleFoods[$language]);
 
 	let limits: Limit[] = [
 		{ name: 'fat', bounds: [100, 120] },

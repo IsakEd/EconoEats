@@ -1,29 +1,27 @@
 import type { Writable } from 'svelte/store';
 import { writable } from 'svelte/store';
 
-type Language = 'swedish' | 'english';
-const language: Writable<Language> = writable('swedish');
-
-interface Currency {
-	endonym: string;
-	symbol: string;
-	shorthand: string;
-}
+export const language: Writable<Language> = writable('swedish');
 
 const currencies: Record<string, Currency> = {
 	SEK: {
+		id: 'SEK',
 		endonym: 'svensk krona',
 		symbol: ':-',
 		shorthand: 'kr'
 	},
 	EUR: {
+		id: 'EUR',
 		endonym: 'euro',
 		symbol: '€',
 		shorthand: 'eur'
 	},
 	USD: {
+		id: 'USD',
 		endonym: 'dollar',
 		symbol: '$',
 		shorthand: 'usd'
 	}
 };
+
+export const currency: Writable<Currency> = writable(currencies.SEK);

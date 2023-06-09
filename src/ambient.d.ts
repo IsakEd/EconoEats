@@ -1,20 +1,15 @@
 interface Food {
 	name: string;
 	data: {
-		price: number;
-		kcal: number;
-		carbs: number;
-		fat: number;
-		protein: number;
+		price: number; // currency/kg
+		kcal: number; // calories/100g
+		carbs: number; //carbohydrates/100g
+		fat: number; // fat/100g
+		protein: number; // protein/100g
 	};
 	suitable: SuitabilityCriteria;
-	bounds: number[2];
+	bounds: number[2]; // 0 to a big portion size
 	type: FoodCategory;
-}
-
-interface Payload {
-	foods: Food[];
-	categoryLimits: Limit[];
 }
 
 interface FoodCategory {
@@ -32,7 +27,21 @@ type SuitabilityCriteria = {
 	gluten: boolean;
 };
 
+interface Payload {
+	foods: Food[];
+	categoryLimits: Limit[];
+}
+
 interface Limit {
 	name: string;
 	bounds: number[];
+}
+
+type Language = 'swedish' | 'english';
+
+interface Currency {
+	id: string;
+	endonym: string;
+	symbol: string;
+	shorthand: string;
 }

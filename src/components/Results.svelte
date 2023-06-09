@@ -125,6 +125,4 @@
 		justify-content: space-between;
 		margin-bottom: 0.3em;
 	}
-	#chart {
-	}
 </style>

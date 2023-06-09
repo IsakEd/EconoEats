@@ -1,10 +1,12 @@
 <script lang="ts">
 	import InputContainer from './InputContainer.svelte';
+	import Button from '$lib/Button.svelte';
+	import ButtonGroup from '$lib/ButtonGroup.svelte';
 
 	export let limits: Limit[];
 	export let userRestrictions: SuitabilityCriteria;
 
-	let strictness: 'strict' | 'relaxed' = 'relaxed';
+	let strictness = ['strict'];
 
 	const calculateCalories = () => {
 		let lowerCals = 0;
@@ -23,7 +25,7 @@
 
 	const updateBounds = () => {
 		limits = limits.map((lim) => {
-			lim.bounds[1] = lim.bounds[0] * (strictness == 'strict' ? 1.05 : 1.2);
+			lim.bounds[1] = lim.bounds[0] * (strictness[0] == 'strict' ? 1.05 : 1.2);
 			calories = calculateCalories();
 			return lim;
 		});
@@ -52,16 +54,11 @@
 			>{calories[0].toFixed(0)} - {calories[1].toFixed(0)}</span
 		>
 	</div>
-	<div class="line">
-		<label>
-			<input type="radio" bind:group={strictness} value="strict" />
-			strict
-		</label>
-
-		<label>
-			<input type="radio" bind:group={strictness} value="relaxed" />
-			relaxed
-		</label>
+	<div id="button-group" class="line flex-row">
+		<ButtonGroup mandatory bind:value={strictness}>
+			<Button value="strict">strict</Button>
+			<Button value="relaxed">relaxed</Button>
+		</ButtonGroup>
 	</div>
 
 	<InputContainer title="Dietary restrictions">
@@ -99,5 +96,6 @@
 	.line {
 		margin-bottom: 1em;
 		text-align: center;
+		justify-content: space-around;
 	}
 </style>
