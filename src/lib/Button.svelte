@@ -20,6 +20,7 @@
 		background-color: transparent;
 		border-radius: 10px;
 		border-color: var(--bleak);
+		margin: 0 1em;
 	}
 
 	.active {

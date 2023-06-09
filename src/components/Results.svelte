@@ -29,7 +29,8 @@
 	const messagesFromCode = {
 		1: {
 			text: 'Error: solution is undefined',
-			subtext: 'Try reloading the page or send a bug report'
+			subtext: 'Try reloading the page or send a bug report',
+			color: 'red'
 		},
 		2: {
 			text: 'Solution is feasible',
@@ -38,16 +39,19 @@
 		3: {
 			text: 'Solution is infeasible',
 			subtext:
-				'There is no solution to your requirements. Try adding more foods or increasing the upper limit'
+				'There was something wrong with the calculation. Do you want to send a bug report so I can check out why?',
+			color: 'red'
 		},
 		4: {
 			text: 'No feasible solution exists',
 			subtext:
-				'The requirements are too tight, there is no possible solution. Try adding more foods or increase the limits.'
+				'The requirements are too tight, there is no possible solution. Try adding more foods or increase the limits.',
+			color: 'red'
 		},
 		5: {
 			text: 'Optimal solution found!',
-			subtext: 'This is the lowest cost to satisfy all requirements:'
+			subtext: 'This is the lowest cost to satisfy all requirements:',
+			color: 'var(--primary-em)'
 		}
 	};
 
@@ -77,7 +81,7 @@
 	const macros = calculateMacros();
 </script>
 
-<Modal {showModal} title={messagesFromCode[status].text}>
+<Modal {showModal} status={messagesFromCode[status]}>
 	<div>
 		<h2 style="margin-bottom: 1em;">{messagesFromCode[status].subtext}</h2>
 		{#each Object.keys(vars) as food}

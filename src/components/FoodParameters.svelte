@@ -76,6 +76,7 @@
 			{/if}
 		{/each}
 	</InputContainer>
+	<InputContainer title="Food group limits" />
 </div>
 
 <style>

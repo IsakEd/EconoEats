@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="139.04965mm"
+   height="61.995377mm"
+   viewBox="0 0 139.04965 61.995376"
+   version="1.1"
+   id="svg7820"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7822"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.91752977"
+     inkscape:cx="346.58276"
+     inkscape:cy="102.44899"
+     inkscape:window-width="1309"
+     inkscape:window-height="456"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7817">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1076"
+       id="linearGradient1078"
+       x1="149.88332"
+       y1="156.90331"
+       x2="802.74536"
+       y2="156.90331"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.17794363,0,0,0.26996279,15.855965,48.223748)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1076">
+      <stop
+         style="stop-color:#2fc826;stop-opacity:1;"
+         offset="0.00675676"
+         id="stop1074" />
+      <stop
+         style="stop-color:#808080;stop-opacity:1;"
+         offset="0.09121621"
+         id="stop1072" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1086"
+       id="linearGradient1088"
+       x1="64.786224"
+       y1="364.94037"
+       x2="668.00122"
+       y2="364.94037"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.20300945,0,0,0.26786869,6.8075801,39.420433)" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1086">
+      <stop
+         style="stop-color:#2fc826;stop-opacity:1;"
+         offset="0.01013513"
+         id="stop1084" />
+      <stop
+         style="stop-color:#808080;stop-opacity:1;"
+         offset="0.09121621"
+         id="stop1082" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-19.826866,-84.679194)">
+    <path
+       id="path4567-3"
+       style="fill:none;stroke:#2fc826;stroke-width:2.11746;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 20.885596,126.81029 8e-6,18.08632 h 9.929436" />
+    <path
+       id="path4567"
+       style="fill:none;stroke:#2fc826;stroke-width:2.11746;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 43.396345,100.0969 6e-6,18.08631 h 9.929434" />
+    <path
+       id="path15269"
+       style="fill:none;stroke:url(#linearGradient1078);stroke-width:1.88316;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 157.93494,85.694635 c 0,0 -6.75972,-0.288365 -27.3327,0.271027 -21.88294,0.595011 -4.43674,14.405508 -23.54022,14.405508 H 43.291189"
+       sodipodi:nodetypes="cssc" />
+    <path
+       id="path16092"
+       style="fill:none;stroke:url(#linearGradient1088);stroke-width:1.93885;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 91.329732,136.17524 c 0,0 20.337738,18.48729 50.244598,-9.63489 H 20.803735"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2fc826;stroke-width:1.94151;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 43.659447,108.39608 c 8.793916,0 8.793916,0 8.793916,0"
+       id="path8110-3" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#2fc826;stroke-width:1.94151;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 20.858048,135.13955 c 8.793918,0 8.793918,0 8.793918,0"
+       id="path8110-3-3" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#808080;stroke-width:1.29926;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 29.428438,126.89677 Z"
+       id="path8166" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.6544px;font-family:'Noto Sans Buginese';-inkscape-font-specification:'Noto Sans Buginese';fill:#2fc826;fill-opacity:1;stroke:#2fc826;stroke-width:0.108272;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="31.329229"
+       y="145.89444"
+       id="text28004"><tspan
+         sodipodi:role="line"
+         id="tspan28002"
+         x="31.329229"
+         y="145.89444"
+         style="font-size:21.6544px;stroke-width:0.108272">ats</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.6544px;font-family:'Noto Sans Buginese';-inkscape-font-specification:'Noto Sans Buginese';fill:#2fc826;fill-opacity:1;stroke:#2fc826;stroke-width:0.108272;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="53.864597"
+       y="119.11665"
+       id="text28004-2"><tspan
+         sodipodi:role="line"
+         id="tspan28002-1"
+         x="53.864597"
+         y="119.11665"
+         style="font-size:21.6544px;stroke-width:0.108272">cono</tspan></text>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 <script>
 	export let showModal; // boolean
-	export let title;
+	export let status;
 	function reloadPage() {
 		const thisPage = window.location.pathname;
 		goto('/').then(() => goto(thisPage));
@@ -18,7 +18,7 @@
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
-		<h1>{title}</h1>
+		<h1 style="color: {status.color};">{status.text}</h1>
 		<hr />
 		<slot />
 		<hr />
@@ -64,5 +64,8 @@
 	}
 	button {
 		display: block;
+	}
+	h1 {
+		font-size: 2em;
 	}
 </style>
