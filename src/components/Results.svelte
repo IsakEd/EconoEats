@@ -1,9 +1,11 @@
 <script>
 	import ActionButton from '$lib/ActionButton.svelte';
+	import Modal from '$lib/Modal.svelte';
 	import PieChart from '$lib/PieChart.svelte';
 
 	export let results;
 	export let foods;
+	export let showModal;
 	let edited = false;
 
 	const deleteFood = (foodname) => {
@@ -75,42 +77,54 @@
 	const macros = calculateMacros();
 </script>
 
-<div>
-	<h1>{messagesFromCode[status].text}</h1>
-	<h2>{messagesFromCode[status].subtext}</h2>
-	{#each Object.keys(vars) as food}
-		{#if vars[food] != 0}
-			<div class="food-item">
-				{(vars[food] * 100).toFixed(0)} grams of {food}
-				<button class="invisible subtle" on:click={() => changeLimit(food, -10)}>-10</button>
-				<button class="invisible subtle" on:click={() => changeLimit(food, -100)}>-100</button>
-				<button class="invisible" on:click={deleteFood(food)} style="color: red">X</button>
-				<button class="invisible subtle" on:click={() => changeLimit(food, 100)}>+100</button>
-				<button class="invisible subtle" on:click={() => changeLimit(food, 10)}>+10</button>
-			</div>
-		{/if}
-	{/each}
-	<h2>For the price of {z.toFixed(0)} kr</h2>
-	<h2>Total calories: {macros.calories.toFixed(0)}</h2>
-</div>
-<div id="chart">
-	<PieChart
-		chartData={[macros.carbs * 4, macros.protein * 4, macros.fat * 9]}
-		chartLabels={[
-			`carbs (${macros.carbs.toFixed(0)}g)`,
-			`protein (${macros.protein.toFixed(0)}g)`,
-			`fat (${macros.fat.toFixed(0)}g) `
-		]}
-	/>
-</div>
-{#if edited}
-	<ActionButton>Recalculate</ActionButton>
-{/if}
+<Modal {showModal} title={messagesFromCode[status].text}>
+	<div>
+		<h2 style="margin-bottom: 1em;">{messagesFromCode[status].subtext}</h2>
+		{#each Object.keys(vars) as food}
+			{#if vars[food] != 0}
+				<div class="food-item">
+					<div><b>{(vars[food] * 100).toFixed(0)}</b> grams of <b>{food}</b></div>
+					<!-- 				<div>
+					<button class="invisible subtle" on:click={() => changeLimit(food, -10)}>-10</button>
+					<button class="invisible subtle" on:click={() => changeLimit(food, -100)}>-100</button>
+					<button class="invisible" on:click={deleteFood(food)} style="color: red">X</button>
+					<button class="invisible subtle" on:click={() => changeLimit(food, 100)}>+100</button>
+					<button class="invisible subtle" on:click={() => changeLimit(food, 10)}>+10</button>
+				</div> -->
+				</div>
+			{/if}
+		{/each}
+		<h2>For the price of {z.toFixed(0)} kr</h2>
+		<h2>Total calories: {macros.calories.toFixed(0)}</h2>
+	</div>
+	<div id="chart">
+		<PieChart
+			chartData={[macros.carbs * 4, macros.protein * 4, macros.fat * 9]}
+			chartLabels={[
+				`carbs (${macros.carbs.toFixed(0)}g)`,
+				`protein (${macros.protein.toFixed(0)}g)`,
+				`fat (${macros.fat.toFixed(0)}g) `
+			]}
+		/>
+	</div>
+	{#if edited}
+		<ActionButton>Recalculate</ActionButton>
+	{/if}
+</Modal>
 
 <style>
-	.subtle {
+	/* 	.subtle {
 		font-style: italic;
 		color: gray;
 		font-size: 0.7em;
+	} */
+	.food-item {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.3em;
+	}
+	#chart {
+		text-align: center;
+		width: 80%;
 	}
 </style>

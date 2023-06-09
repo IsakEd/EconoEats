@@ -47,16 +47,23 @@
 			</div>
 		{/each}
 	</InputContainer>
-	calories: {calories[0].toFixed(0)} - {calories[1].toFixed(0)}
-	<label>
-		<input type="radio" bind:group={strictness} value="strict" />
-		strict
-	</label>
+	<div class="line">
+		calories: <span style="font-family: monospace; font-size: 1.2em;"
+			>{calories[0].toFixed(0)} - {calories[1].toFixed(0)}</span
+		>
+	</div>
+	<div class="line">
+		<label>
+			<input type="radio" bind:group={strictness} value="strict" />
+			strict
+		</label>
 
-	<label>
-		<input type="radio" bind:group={strictness} value="relaxed" />
-		relaxed
-	</label>
+		<label>
+			<input type="radio" bind:group={strictness} value="relaxed" />
+			relaxed
+		</label>
+	</div>
+
 	<InputContainer title="Dietary restrictions">
 		{#each Object.keys(userRestrictions) as restriction}
 			{#if restriction === 'vegan' || restriction === 'vegetarian' || restriction === 'lactose' || restriction === 'gluten'}
@@ -87,5 +94,10 @@
 	input {
 		width: 6em;
 		margin-top: 0.5em;
+	}
+
+	.line {
+		margin-bottom: 1em;
+		text-align: center;
 	}
 </style>

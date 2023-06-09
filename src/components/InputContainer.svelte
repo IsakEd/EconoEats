@@ -19,7 +19,7 @@
 	}
 
 	h2 {
-		background-color: var(--primary-em);
+		background-color: var(--secondary-em);
 		color: white;
 		padding: 8px;
 	}

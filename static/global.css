@@ -37,9 +37,6 @@ sub,
 sup,
 tt,
 var,
-b,
-u,
-i,
 center,
 dl,
 dt,
@@ -85,11 +82,12 @@ video {
 
 body {
 	background-color: var(--background-color);
-	font-family: 'DM Sans', sans-serif;
+	font-family: 'Oxygen', sans-serif;
 }
 
 * {
-	--primary-em: #4caf50;
+	--primary-em: #6bc76e;
+	--secondary-em: #4caf50;
 	--background-color: #fafafa;
 	--primary-color: #ffffff;
 }

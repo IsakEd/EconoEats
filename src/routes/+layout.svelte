@@ -1,9 +1,10 @@
-<div class="header">
-	<h1>OptiNut</h1>
-</div>
+<div class="header" />
 <div id="all-content">
 	<slot />
 </div>
 
 <style>
+	#all-content {
+		margin-left: 1em;
+	}
 </style>

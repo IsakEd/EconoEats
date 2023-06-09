@@ -12,8 +12,10 @@
 		background-color: var(--primary-em);
 		border: 2px solid var(--primary-em);
 		padding: 0.2em;
+		width: fit-content;
 	}
-	.action-button :hover {
-		background-color: var(--primary-color) !important;
+	.action-button:hover {
+		color: var(--background-color);
+		background-color: var(--secondary-em) !important;
 	}
 </style>

@@ -1,5 +1,6 @@
 <script>
 	export let showModal; // boolean
+	export let title;
 	function reloadPage() {
 		const thisPage = window.location.pathname;
 		goto('/').then(() => goto(thisPage));
@@ -17,6 +18,7 @@
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
+		<h1>{title}</h1>
 		<hr />
 		<slot />
 		<hr />

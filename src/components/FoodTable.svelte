@@ -51,7 +51,7 @@
 	}
 
 	th {
-		background-color: var(--primary-em);
+		background-color: var(--secondary-em);
 		color: white;
 	}
 	.narrow {
@@ -61,5 +61,8 @@
 	input {
 		width: 6em;
 		margin-top: 0.5em;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 2px;
 	}
 </style>

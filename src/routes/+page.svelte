@@ -48,14 +48,12 @@
 
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
 <FoodTable {foods} />
-<div class="flex-col centered" id="optimize-button">
+<div class="flex-row centered" id="optimize-button">
 	<ActionButton sizeEm="1.5" on:click={optimizeOnServer}>Optimize</ActionButton>
 </div>
 
 {#if results}
-	<Modal {showModal}>
-		<Results {results} {foods} />
-	</Modal>
+	<Results {showModal} {results} {foods} />
 {/if}
 
 <style>
