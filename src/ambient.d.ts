@@ -31,6 +31,7 @@ type SuitabilityCriteria = {
 	lactose: boolean;
 	gluten: boolean;
 };
+
 interface Limit {
 	name: string;
 	bounds: number[];

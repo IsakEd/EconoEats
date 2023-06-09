@@ -1,16 +1,19 @@
 <script>
+	export let sizeEm;
 </script>
 
-<button on:click type="submit" class="action-button"><slot /></button>
+<button on:click type="submit" class="action-button" style="font-size: {sizeEm}em;"><slot /></button
+>
 
 <style>
 	.action-button {
-		color: var(--accent-color);
-		border-radius: 5px;
-		background-color: var(--secondary-color);
-		border: 1px solid var(--accent-color);
+		color: var(--primary-color);
+		border-radius: 15px;
+		background-color: var(--primary-em);
+		border: 2px solid var(--primary-em);
+		padding: 0.2em;
 	}
 	.action-button :hover {
-		background-color: var(--contrast-color) !important;
+		background-color: var(--primary-color) !important;
 	}
 </style>

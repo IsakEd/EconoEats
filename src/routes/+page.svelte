@@ -5,6 +5,7 @@
 	import postData from '$lib/postData';
 	import Results from '../components/Results.svelte';
 	import Modal from '$lib/Modal.svelte';
+	import ActionButton from '$lib/ActionButton.svelte';
 
 	let results = '';
 	$: showModal = !!results; //bang bang, you're boolean!
@@ -47,10 +48,19 @@
 
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
 <FoodTable {foods} />
-<div><button on:click={optimizeOnServer}>OPTIMIZE</button></div>
+<div class="flex-col centered" id="optimize-button">
+	<ActionButton sizeEm="1.5" on:click={optimizeOnServer}>Optimize</ActionButton>
+</div>
 
 {#if results}
 	<Modal {showModal}>
 		<Results {results} {foods} />
 	</Modal>
 {/if}
+
+<style>
+	#optimize-button {
+		width: 80%;
+		margin: 1em 0;
+	}
+</style>
