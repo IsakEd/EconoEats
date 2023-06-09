@@ -12,6 +12,11 @@ interface Food {
 	type: FoodCategory;
 }
 
+interface Payload {
+	foods: Food[];
+	categoryLimits: Limit[];
+}
+
 interface FoodCategory {
 	dairy: boolean;
 	vegetable: boolean;

@@ -4,7 +4,6 @@
 
 	export let chartLabels;
 	export let chartData;
-
 	const data = {
 		labels: chartLabels,
 		datasets: [

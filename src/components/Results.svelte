@@ -59,9 +59,9 @@
 			try {
 				// TODO: don't do this
 				const { protein, carbs, fat } = foods.find((obj) => obj.name === food).data;
-				totalCarbs += carbs;
-				totalFat += fat;
-				totalProtein += protein;
+				totalCarbs += hectogram * carbs;
+				totalFat += hectogram * fat;
+				totalProtein += hectogram * protein;
 				cals += (4 * (protein + carbs) + 9 * fat) * hectogram;
 			} catch {} //TODO: add error handling
 		}
@@ -95,8 +95,12 @@
 </div>
 <div id="chart">
 	<PieChart
-		chartData={[macros.carbs, macros.fat, macros.protein]}
-		chartLabels={['Carbohydrates', 'Fat', 'Protein']}
+		chartData={[macros.carbs * 4, macros.protein * 4, macros.fat * 9]}
+		chartLabels={[
+			`carbs (${macros.carbs.toFixed(0)}g)`,
+			`protein (${macros.protein.toFixed(0)}g)`,
+			`fat (${macros.fat.toFixed(0)}g) `
+		]}
 	/>
 </div>
 {#if edited}

@@ -1,5 +1,9 @@
 <script>
 	export let showModal; // boolean
+	function reloadPage() {
+		const thisPage = window.location.pathname;
+		goto('/').then(() => goto(thisPage));
+	}
 
 	let dialog; // HTMLDialogElement
 

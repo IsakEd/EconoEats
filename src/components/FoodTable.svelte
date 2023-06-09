@@ -9,8 +9,8 @@
 			{#each Object.keys(foods[0].data) as attrib}
 				<th>{attrib}</th>
 			{/each}
-			<th>weekly min</th>
-			<th>weekly max</th>
+			<th>min (g)</th>
+			<th>max (g)</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,7 +20,7 @@
 					{food.name}
 				</td>
 				{#each Object.values(food.data) as value}
-					<td style="font-family: monospace">{value}</td>
+					<td style="font-family: monospace">{parseFloat(value.toFixed(1))}</td>
 				{/each}
 				<td>
 					<input class="narrow" type="number" bind:value={food.bounds[0]} />
@@ -55,7 +55,7 @@
 		color: white;
 	}
 	.narrow {
-		width: 4em;
+		width: 3em;
 	}
 
 	input {

@@ -6,25 +6,19 @@
 	import Results from '../components/Results.svelte';
 	import Modal from '$lib/Modal.svelte';
 
-	let server = 'http://44.202.140.228/calculate';
 	let results = '';
 	$: showModal = !!results; //bang bang, you're boolean!
 
-	const optimizeOnServer = async () => {
-		try {
-			console.log(foods);
-			const res = await postData(server, {
-				foods: foods,
-				categoryLimits: limits
-			});
-			results = res.result;
-		} catch (error) {
-			// Handle the error gracefully
-			console.error('An error occurred:', error);
-			// You can choose to do something specific in case of an error, such as setting a default value for results or showing an error message to the user
-			results = 'An error occurred when connecting to the server'; // Set results to an empty array as a default value
-		}
-	};
+	async function optimizeOnServer() {
+		const response = await fetch('/opti', {
+			method: 'POST',
+			body: JSON.stringify({ foods: foods, categoryLimits: limits }),
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
+		results = await response.json();
+	}
 
 	//Imports all the food from the "database"
 	let foods = structuredClone(exampleFoods);
