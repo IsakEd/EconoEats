@@ -97,15 +97,17 @@
 		<h2>For the price of {z.toFixed(0)} kr</h2>
 		<h2>Total calories: {macros.calories.toFixed(0)}</h2>
 	</div>
-	<div id="chart">
-		<PieChart
-			chartData={[macros.carbs * 4, macros.protein * 4, macros.fat * 9]}
-			chartLabels={[
-				`carbs (${macros.carbs.toFixed(0)}g)`,
-				`protein (${macros.protein.toFixed(0)}g)`,
-				`fat (${macros.fat.toFixed(0)}g) `
-			]}
-		/>
+	<div id="chart" class="flex-row centered">
+		<div style="width: 80%;">
+			<PieChart
+				chartData={[macros.carbs * 4, macros.protein * 4, macros.fat * 9]}
+				chartLabels={[
+					`carbs (${macros.carbs.toFixed(0)}g)`,
+					`protein (${macros.protein.toFixed(0)}g)`,
+					`fat (${macros.fat.toFixed(0)}g) `
+				]}
+			/>
+		</div>
 	</div>
 	{#if edited}
 		<ActionButton>Recalculate</ActionButton>
@@ -124,7 +126,5 @@
 		margin-bottom: 0.3em;
 	}
 	#chart {
-		text-align: center;
-		width: 80%;
 	}
 </style>
