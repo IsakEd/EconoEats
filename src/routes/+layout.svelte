@@ -22,10 +22,11 @@
 
 <style>
 	#all-content {
-		margin-left: 1em;
+		margin: 0 0.5em;
 	}
 
 	#header {
+		width: 100vw;
 		align-items: center;
 		justify-content: space-around;
 		height: 2.75em;
@@ -34,7 +35,7 @@
 	}
 
 	#logo {
-		height: 2.5em;
+		height: 2.2em;
 	}
 
 	.logo {

@@ -2,6 +2,9 @@
 	import InputContainer from './InputContainer.svelte';
 	import Button from '$lib/Button.svelte';
 	import ButtonGroup from '$lib/ButtonGroup.svelte';
+	import FoodTable from './FoodTable.svelte';
+	type FoodCategories = Array<keyof FoodCategory>;
+	const foodCatorories: FoodCategories = ['fruit', 'vegetable', 'junk', 'dairy', 'grain'];
 
 	export let limits: Limit[];
 	export let userRestrictions: SuitabilityCriteria;
@@ -76,8 +79,13 @@
 			{/if}
 		{/each}
 	</InputContainer>
-	<!-- 	<InputContainer title="Food group limits" />
- -->
+	<InputContainer title="Food group limits">
+		<div class="flex-row" id="icon-row">
+			{#each foodCatorories as name}
+				<img class="icon" src="/icons/{name}.svg" alt={name} />
+			{/each}
+		</div>
+	</InputContainer>
 </div>
 
 <style>
@@ -99,5 +107,13 @@
 		margin-bottom: 1em;
 		text-align: center;
 		justify-content: space-around;
+	}
+
+	#icon-row {
+		width: 100%;
+		align-content: space-between;
+	}
+	.icon {
+		height: 1.5em;
 	}
 </style>
