@@ -11,7 +11,9 @@
 		<a href="/about" class:active={$page.url.pathname === '/about'}>ABOUT</a>
 	</div>
 	<div id="external">
-		<img class="logo" src="/github-mark.svg" alt="GitHub" />
+		<a href="https://github.com/IsakEd/EconoEats">
+			<img class="logo" src="/github-mark.svg" alt="GitHub" />
+		</a>
 	</div>
 </div>
 <div id="all-content">
@@ -46,7 +48,7 @@
 	.active {
 		color: #535353;
 	}
-	nav a {
+	#nav a {
 		padding: 0 0.4em;
 	}
 </style>

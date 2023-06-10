@@ -38,7 +38,7 @@
 	};
 
 	function filterFoodsByRestrictions() {
-		foods = JSON.parse(JSON.stringify(exampleFoods)).filter((food: Food) => {
+		foods = structuredClone(exampleFoods[$language]).filter((food: Food) => {
 			return Object.entries(userRestrictions).every(([key, value]) => {
 				return !value || food.suitable[key as keyof SuitabilityCriteria];
 			});
