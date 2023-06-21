@@ -1,6 +1,8 @@
 import GLPK from 'glpk.js';
 const glpk = GLPK();
 
+// This class is essentially the EconoEats->GLPK adapter.
+
 class Problem {
 	constructor(foods, categoryBounds) {
 		this.name = 'LP';
@@ -8,7 +10,7 @@ class Problem {
 			direction: glpk.GLP_MIN,
 			name: 'price',
 			vars: foods.map((food) => {
-				return { name: food.name, coef: food.data.price * 0.1 }; // Pris per hekto
+				return { name: food.name, coef: food.data.price * 0.1 }; // 0.1 since GLPK deals in hg but prices are per kg
 			})
 		};
 

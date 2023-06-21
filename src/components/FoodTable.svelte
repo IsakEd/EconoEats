@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { language } from '../stores';
+	import { currency } from '../stores';
 	export let foods: Food[];
 </script>
 
