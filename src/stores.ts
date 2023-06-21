@@ -1,7 +1,7 @@
 import type { Writable } from 'svelte/store';
 import { writable } from 'svelte/store';
 
-export const language: Writable<Language> = writable('swedish');
+export const language: Writable<Language> = writable('english');
 
 const currencies: Record<string, Currency> = {
 	SEK: {

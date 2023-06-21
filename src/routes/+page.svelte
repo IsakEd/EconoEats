@@ -7,6 +7,9 @@
 	import { language } from '../stores';
 	import { currency } from '../stores';
 
+	$: console.log('language is now ' + $language);
+	$: console.log('currency is now ' + $currency.id);
+
 	let results = '';
 	$: showModal = !!results; //bang bang, you're boolean!
 
@@ -22,7 +25,7 @@
 	}
 
 	//Imports all the food from the "database"
-	let foods = structuredClone(exampleFoods[$language]);
+	$: foods = structuredClone(exampleFoods[$language]);
 
 	let limits: Limit[] = [
 		{ name: 'fat', bounds: [100, 120] },

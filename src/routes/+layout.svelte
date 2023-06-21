@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import { language } from '../stores';
 </script>
 
 <div id="header" class="flex-row">
@@ -10,7 +11,25 @@
 		<a href="/faq" class:active={$page.url.pathname === '/faq'}>FAQ</a>
 		<a href="/about" class:active={$page.url.pathname === '/about'}>ABOUT</a>
 	</div>
-	<div id="external">
+	<div id="external" class="flex-row">
+		<div id="languages">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<span
+				class="language-select"
+				on:click={() => ($language = 'swedish')}
+				class:active={$language === 'swedish'}
+			>
+				SE
+			</span>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<span
+				class="language-select"
+				on:click={() => ($language = 'english')}
+				class:active={$language === 'english'}
+			>
+				EN
+			</span>
+		</div>
 		<a href="https://github.com/IsakEd/EconoEats">
 			<img class="logo" src="/github-mark.svg" alt="GitHub" />
 		</a>
@@ -42,7 +61,8 @@
 		height: 1.5em;
 	}
 
-	a {
+	a,
+	.language-select {
 		text-decoration: none;
 		color: #ccc;
 	}
@@ -51,5 +71,12 @@
 	}
 	#nav a {
 		padding: 0 0.4em;
+	}
+	#languages {
+		margin-right: 1em;
+	}
+	#languages > span {
+		margin: 0 0.3em;
+		align-items: center;
 	}
 </style>

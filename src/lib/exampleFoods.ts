@@ -5,6 +5,30 @@ type LanguageFoodMap = {
 const exampleFoods: LanguageFoodMap = {
 	swedish: [
 		{
+			name: 'pasta',
+			data: {
+				price: 15,
+				kcal: 356,
+				carbs: 71,
+				fat: 2,
+				protein: 12.5
+			},
+			suitable: {
+				vegan: true,
+				vegetarian: true,
+				lactose: true,
+				gluten: false
+			},
+			bounds: [0, 240],
+			type: {
+				dairy: false,
+				vegetable: false,
+				fruit: false,
+				junk: false,
+				grain: true
+			}
+		},
+		{
 			name: 'havregryn',
 			data: { price: 20, kcal: 389, carbs: 66, fat: 7, protein: 13 },
 			suitable: { vegan: true, vegetarian: true, lactose: true, gluten: false },

@@ -2,7 +2,6 @@
 	import InputContainer from './InputContainer.svelte';
 	import Button from '$lib/Button.svelte';
 	import ButtonGroup from '$lib/ButtonGroup.svelte';
-	import FoodTable from './FoodTable.svelte';
 	type FoodCategories = Array<keyof FoodCategory>;
 	const foodCatorories: FoodCategories = ['fruit', 'vegetable', 'junk', 'dairy', 'grain'];
 
