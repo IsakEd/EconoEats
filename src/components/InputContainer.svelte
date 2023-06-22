@@ -1,5 +1,5 @@
 <script lang="ts">
-	//let calories: number[] = [0, 2500];
+	// Placeholder ranges for macronutrient intake
 	let fat: number[] = [60, 120];
 	let carbohydrates: number[] = [160, 300];
 	let protein: number[] = [120, 180];

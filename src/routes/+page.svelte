@@ -6,9 +6,8 @@
 	import ActionButton from '$lib/ActionButton.svelte';
 	import { language } from '../stores';
 	import { currency } from '../stores';
-
-	$: console.log('language is now ' + $language);
-	$: console.log('currency is now ' + $currency.id);
+	import lang from '$lib/lang';
+	$: L = lang[$language];
 
 	let results = '';
 	$: showModal = !!results; //bang bang, you're boolean!
@@ -52,7 +51,7 @@
 <FoodParameters {limits} {userRestrictions} on:change={filterFoodsByRestrictions} />
 <FoodTable {foods} />
 <div class="flex-row centered" id="optimize-button">
-	<ActionButton sizeEm="1.5" on:click={optimizeOnServer}>Optimize</ActionButton>
+	<ActionButton sizeEm="1.5" on:click={optimizeOnServer}>{L.optimize}</ActionButton>
 </div>
 
 {#if results}

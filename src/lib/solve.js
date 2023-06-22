@@ -1,5 +1,5 @@
 import GLPK from 'glpk.js';
-import Problem from './Problem.js';
+import Problem from './Problem';
 
 function solveLP(foods, categoryLimits, foodItemLimits) {
 	const glpk = GLPK();

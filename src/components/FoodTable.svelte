@@ -1,15 +1,17 @@
-<script lang="ts">
+<script>
 	import { language } from '../stores';
 	import { currency } from '../stores';
-	export let foods: Food[];
+	import lang from '$lib/lang';
+	export let foods;
+	$: L = lang[$language];
 </script>
 
 <table>
 	<thead>
 		<tr>
-			<th> name </th>
+			<th> {L.name} </th>
 			{#each Object.keys(foods[0].data) as attrib}
-				<th>{attrib}</th>
+				<th>{attrib == 'price' ? `${$currency.symbol}/kg` : L[attrib]}</th>
 			{/each}
 			<th>min (g)</th>
 			<th>max (g)</th>

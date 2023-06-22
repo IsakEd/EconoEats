@@ -2,14 +2,23 @@
 	import InputContainer from './InputContainer.svelte';
 	import Button from '$lib/Button.svelte';
 	import ButtonGroup from '$lib/ButtonGroup.svelte';
+	import { language } from '../stores';
+	import { currency } from '../stores';
+	import lang from '$lib/lang';
+	$: L = lang[$language];
+
 	type FoodCategories = Array<keyof FoodCategory>;
 	const foodCatorories: FoodCategories = ['fruit', 'vegetable', 'junk', 'dairy', 'grain'];
 
 	export let limits: Limit[];
 	export let userRestrictions: SuitabilityCriteria;
 
+	// Decides how narrow the caloric tolerance is to be
 	let strictness = ['strict'];
 
+	// The reason for this calculation despite caloric density already existing on the Food object is to break the calories
+	// down by source. Because of slightly different definitions and regulations of calorie labeling, this means that the sum of
+	// all contributed calories may differ slightly from the manufacturers reported declared energy.
 	const calculateCalories = () => {
 		let lowerCals = 0;
 		let upperCals = 0;
@@ -37,11 +46,11 @@
 	let calories = calculateCalories();
 </script>
 
-<div id="content" class="">
-	<InputContainer title="Macronutrient goals">
+<div id="content">
+	<InputContainer title={L.macro_title}>
 		{#each limits as goal, i}
 			<div class="flex-col centered bounds">
-				<p>{goal.name}</p>
+				<p>{L[goal.name]}</p>
 				<input
 					name="{goal.name}-lower"
 					type="number"
@@ -52,22 +61,23 @@
 		{/each}
 	</InputContainer>
 	<div class="line">
-		calories: <span style="font-family: monospace; font-size: 1.2em;"
+		{L.calories}:
+		<span style="font-family: monospace; font-size: 1.2em;"
 			>{calories[0].toFixed(0)} - {calories[1].toFixed(0)}</span
 		>
 	</div>
 	<div id="button-group" class="line flex-row">
 		<ButtonGroup mandatory bind:value={strictness}>
-			<Button value="strict">strict</Button>
-			<Button value="relaxed">relaxed</Button>
+			<Button value="strict">{L.strict}</Button>
+			<Button value="relaxed">{L.relaxed}</Button>
 		</ButtonGroup>
 	</div>
 
-	<InputContainer title="Dietary restrictions">
+	<InputContainer title={L.dietary_restrictions}>
 		{#each Object.keys(userRestrictions) as restriction}
 			{#if restriction === 'vegan' || restriction === 'vegetarian' || restriction === 'lactose' || restriction === 'gluten'}
 				<div class="flex-col centered">
-					<p>{restriction}</p>
+					<p>{L[restriction]}</p>
 					<input
 						name="carbs-upper"
 						type="checkbox"
@@ -78,13 +88,13 @@
 			{/if}
 		{/each}
 	</InputContainer>
-	<InputContainer title="Food group limits">
+	<!-- 	<InputContainer title="Food group limits">
 		<div class="flex-row" id="icon-row">
 			{#each foodCatorories as name}
 				<img class="icon" src="/icons/{name}.svg" alt={name} />
 			{/each}
 		</div>
-	</InputContainer>
+	</InputContainer> -->
 </div>
 
 <style>

@@ -1,6 +1,8 @@
 <script>
 	import { page } from '$app/stores';
 	import { language } from '../stores';
+	import { currency } from '../stores';
+	import { currencies } from '../stores';
 </script>
 
 <div id="header" class="flex-row">
@@ -16,18 +18,24 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span
 				class="language-select"
-				on:click={() => ($language = 'swedish')}
+				on:click={() => {
+					$language = 'swedish';
+					$currency = currencies.SEK;
+				}}
 				class:active={$language === 'swedish'}
 			>
-				SE
+				SE|kr
 			</span>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span
 				class="language-select"
-				on:click={() => ($language = 'english')}
+				on:click={() => {
+					$language = 'english';
+					$currency = currencies.EUR;
+				}}
 				class:active={$language === 'english'}
 			>
-				EN
+				EN|€
 			</span>
 		</div>
 		<a href="https://github.com/IsakEd/EconoEats">

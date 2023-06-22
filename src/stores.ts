@@ -3,11 +3,11 @@ import { writable } from 'svelte/store';
 
 export const language: Writable<Language> = writable('english');
 
-const currencies: Record<string, Currency> = {
+export const currencies: Record<string, Currency> = {
 	SEK: {
 		id: 'SEK',
 		endonym: 'svensk krona',
-		symbol: ':-',
+		symbol: 'kr',
 		shorthand: 'kr'
 	},
 	EUR: {

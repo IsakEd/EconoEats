@@ -26,6 +26,7 @@
 		edited = true;
 	};
 
+	// Code is here referring to the
 	const messagesFromCode = {
 		1: {
 			text: 'Error: solution is undefined',
@@ -55,7 +56,9 @@
 		}
 	};
 
+	// Gets the variables from the GLPK software
 	const { status, z, vars, dual } = results;
+
 	const calculateMacros = () => {
 		let cals = 0;
 		let totalCarbs = 0;
