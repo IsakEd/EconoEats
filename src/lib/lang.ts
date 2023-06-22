@@ -14,7 +14,7 @@ const lang: Lang = {
 		price: 'pris',
 		carbs: 'kolh.',
 		fat: 'fett',
-		optimize: 'Optimisera!',
+		optimize: 'Optimera!',
 		lactose: 'laktos',
 		calories: 'kalorier',
 		kcal: 'kcal',
@@ -23,7 +23,12 @@ const lang: Lang = {
 		relaxed: 'generös',
 		vegan: 'vegan',
 		vegetarian: 'vegetarian',
-		gluten: 'gluten'
+		gluten: 'gluten',
+		partitive: 'gram',
+		saved: 'sparade',
+		increased_allowance: 'ökad gräns',
+		costs: 'Till en kostnad av',
+		total_cals: 'Totalt energiintag:'
 	},
 	english: {
 		macro_title: 'Macronutrient goals',
@@ -41,7 +46,12 @@ const lang: Lang = {
 		kcal: 'kcal',
 		protein: 'protein',
 		strict: 'strict',
-		relaxed: 'relaxed'
+		relaxed: 'relaxed',
+		partitive: 'grams of',
+		saved: 'saved',
+		increased_allowance: 'increased allowance',
+		costs: 'For the price of',
+		total_cals: 'Total calories:'
 	}
 };
 export default lang;

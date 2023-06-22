@@ -1,4 +1,5 @@
 <script>
+	import { language } from '../stores';
 	export let showModal; // boolean
 	export let status;
 	function reloadPage() {
@@ -18,12 +19,10 @@
 	on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
-		<h1 style="color: {status.color};">{status.text}</h1>
+		<h1 style="color: {status.color};">{status.text[$language]}</h1>
 		<hr />
 		<slot />
 		<hr />
-		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()}>close modal</button>
 	</div>
 </dialog>
 

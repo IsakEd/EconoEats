@@ -85,6 +85,6 @@
 	}
 	#languages > span {
 		margin: 0 0.3em;
-		align-items: center;
+		align-items: baseline;
 	}
 </style>

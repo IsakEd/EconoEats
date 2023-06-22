@@ -44,4 +44,6 @@ interface Currency {
 	endonym: string;
 	symbol: string;
 	shorthand: string;
+	plural: string;
+	fractional: string;
 }

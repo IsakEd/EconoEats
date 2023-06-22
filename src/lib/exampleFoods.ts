@@ -36,7 +36,7 @@ const exampleFoods: LanguageFoodMap = {
 			type: { dairy: false, vegetable: false, fruit: false, junk: false, grain: true }
 		},
 		{
-			name: 'pea/rice 7:3 proteinpulver',
+			name: 'veganskt proteinpulver',
 			data: { price: 259.8, kcal: 380.21, carbs: 3.24, fat: 5.25, protein: 80 },
 			suitable: { vegan: true, vegetarian: true, lactose: true, gluten: true },
 			bounds: [0, 90],

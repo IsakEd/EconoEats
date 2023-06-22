@@ -2,6 +2,10 @@
 	import ActionButton from '$lib/ActionButton.svelte';
 	import Modal from '$lib/Modal.svelte';
 	import PieChart from '$lib/PieChart.svelte';
+	import { currency, language } from '../stores';
+	import lang from '$lib/lang';
+	import messagesFromCode from '$lib/messagesFromCode';
+	$: L = lang[$language];
 
 	export let results;
 	export let foods;
@@ -24,36 +28,6 @@
 		}
 		foods = newFoods;
 		edited = true;
-	};
-
-	// Code is here referring to the
-	const messagesFromCode = {
-		1: {
-			text: 'Error: solution is undefined',
-			subtext: 'Try reloading the page or send a bug report',
-			color: 'red'
-		},
-		2: {
-			text: 'Solution is feasible',
-			subtext: "So maybe that means it's good?"
-		},
-		3: {
-			text: 'Solution is infeasible',
-			subtext:
-				'There was something wrong with the calculation. Do you want to send a bug report so I can check out why?',
-			color: 'red'
-		},
-		4: {
-			text: 'No feasible solution exists',
-			subtext:
-				'The requirements are too tight, there is no possible solution. Try adding more foods or increase the limits.',
-			color: 'red'
-		},
-		5: {
-			text: 'Optimal solution found!',
-			subtext: 'This is the lowest cost to satisfy all requirements:',
-			color: 'var(--primary-em)'
-		}
 	};
 
 	// Gets the variables from the GLPK software
@@ -86,11 +60,18 @@
 
 <Modal {showModal} status={messagesFromCode[status]}>
 	<div>
-		<h2 style="margin-bottom: 1em;">{messagesFromCode[status].subtext}</h2>
+		<h2 style="margin-bottom: .2em;">{messagesFromCode[status].subtext[$language]}</h2>
+		<div id="saved" class="subtle flex-row">
+			{L.saved}
+			{$currency.fractional} per 100g {L.increased_allowance}
+		</div>
 		{#each Object.keys(vars) as food}
 			{#if vars[food] != 0}
 				<div class="food-item">
-					<div><b>{(vars[food] * 100).toFixed(0)}</b> grams of <b>{food}</b></div>
+					<div><b>{parseFloat((vars[food] * 100).toFixed(0))}</b> {L.partitive} <b>{food}</b></div>
+					<div class="dual subtle">
+						{(-100 * dual[food]).toFixed(2)}
+					</div>
 					<!-- 				<div>
 					<button class="invisible subtle" on:click={() => changeLimit(food, -10)}>-10</button>
 					<button class="invisible subtle" on:click={() => changeLimit(food, -100)}>-100</button>
@@ -101,8 +82,12 @@
 				</div>
 			{/if}
 		{/each}
-		<h2>For the price of {z.toFixed(0)} kr</h2>
-		<h2>Total calories: {macros.calories.toFixed(0)}</h2>
+		<h2>
+			{L.costs}
+			<span id="price" style={`color: ${status == 5 ? 'green' : 'red'};`}>{z.toFixed(2)}</span>
+			{$currency.plural}
+		</h2>
+		<h2>{L.total_cals} {macros.calories.toFixed(0)} kcal</h2>
 	</div>
 	<div id="chart" class="flex-row centered">
 		<div style="width: 80%;">
@@ -122,14 +107,19 @@
 </Modal>
 
 <style>
-	/* 	.subtle {
+	.subtle {
 		font-style: italic;
 		color: gray;
 		font-size: 0.7em;
-	} */
+	}
 	.food-item {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 0.3em;
+	}
+
+	#saved {
+		justify-content: end;
+		margin-bottom: 0.2em;
 	}
 </style>
