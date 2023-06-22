@@ -27,10 +27,10 @@
 					<td style="font-family: monospace">{parseFloat(value.toFixed(1))}</td>
 				{/each}
 				<td>
-					<input class="narrow" type="number" bind:value={food.bounds[0]} />
+					<input class="narrow" name={`${food}-lower`} type="number" bind:value={food.bounds[0]} />
 				</td>
 				<td>
-					<input class="narrow" type="number" bind:value={food.bounds[1]} />
+					<input class="narrow" name={`${food}-upper`} type="number" bind:value={food.bounds[1]} />
 				</td>
 			</tr>
 		{/each}
