@@ -4,10 +4,10 @@
 	import { currency } from '../stores';
 	import { currencies } from '../stores';
 </script>
-<div id="header" class="flex-row">
-	<titl id="EconoEats" >
-		<img id="logo" src="/logo.svg" alt="EconoEats" />
 
+<div id="header" class="flex-row">
+	<title id="EconoEats">
+		<img id="logo" src="/logo.svg" alt="EconoEats" />
 	</title>
 	<div id="nav">
 		<a href="/" class:active={$page.url.pathname === '/'}>OPTIMIZER</a>
