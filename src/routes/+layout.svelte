@@ -11,7 +11,6 @@
 	<div id="nav">
 		<a href="/" class:active={$page.url.pathname === '/'}>OPTIMIZER</a>
 		<a href="/faq" class:active={$page.url.pathname === '/faq'}>FAQ</a>
-		<a href="/about" class:active={$page.url.pathname === '/about'}>ABOUT</a>
 	</div>
 	<div id="external" class="flex-row">
 		<div id="languages">
