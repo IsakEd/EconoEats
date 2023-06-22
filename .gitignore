@@ -9,3 +9,7 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 apikey.txt
+data-utils/foods.json
+data-utils/modified_foods.txt
+data-utils/surveyFoods.jsons
+data-utils/foundationalFoods.json
